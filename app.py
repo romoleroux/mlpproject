@@ -1,11 +1,8 @@
 from flask import Flask, jsonify, request, render_template
-
+import os
 import numpy as np
 import pandas as pd
-
-
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
 application = Flask(__name__)
@@ -31,10 +28,15 @@ def predict_datapoint():
         )
         pred_df = data.get_data_as_data_frame()
         print(pred_df)
-
         predict_pipeline = PredictPipeline()
         results = predict_pipeline.predict(pred_df)
         return render_template('home.html', results=results[0])
 
+# Endpoint de salud para Railway
+@app.route('/health')
+def health():
+    return jsonify({"status": "healthy", "message": "App is running"})
+
 if __name__ == "__main__":
-    app.run(host = "0.0.0.0", debug=True)
+    # Local
+    app.run(host="0.0.0.0", port=5000, debug=True)

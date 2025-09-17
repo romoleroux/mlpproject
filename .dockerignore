@@ -1,0 +1,35 @@
+# Entorno virtual
+
+venv/
+env/
+
+# Notebooks y datos de desarrollo
+
+notebook/
+logs/
+catboost_info/
+
+# Archivos temporales
+
+_.pyc
+**pycache**/
+_.log
+
+# Git y documentación
+
+.git/
+.gitignore
+README.md
+setup.py
+mlproject.egg-info/
+
+# Archivos específicos
+
+show_tree.py
+estructura.txt
+
+# Formatos de datos innecesarios
+
+_.xlsx
+_.parquet
+c
